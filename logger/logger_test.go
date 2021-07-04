@@ -1,15 +1,14 @@
-package logger_test
+package logger
 
 import (
 	"errors"
 	"testing"
-
-	"kchain.com/framework/logger"
 )
 
 func TestAll(t *testing.T) {
-	logger.Debug("debug logging")
-	logger.Info("debug logging", "dsfds")
-	logger.Info(&struct{ Metadata string }{Metadata: "shit happen"})
-	logger.Errorf("error %v", errors.New("shit happen"))
+	InitLevel("test",5)
+	Debug("debug logging")
+	Info("debug logging", "dsfds")
+	Info(&struct{ Metadata string }{Metadata: "metadata"})
+	Errorf("error %v", errors.New("error test"))
 }
